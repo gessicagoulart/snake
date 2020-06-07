@@ -14,6 +14,7 @@ public class GridPosition {
 
         col = (int) (Math.random() * grid.getCols());
         row = (int) (Math.random() * grid.getRows());
+        this.grid = grid;
 
         int x = grid.colToX(col);
         int y = grid.rowToY(row);
@@ -28,6 +29,7 @@ public class GridPosition {
 
         int x = grid.colToX(col);
         int y = grid.rowToY(row);
+        this.grid = grid;
 
         rectangle = new Rectangle(x, y, grid.getCellSize(), grid.getCellSize());
     }
@@ -38,7 +40,6 @@ public class GridPosition {
         int initialRow = row;
 
         switch (direction) {
-
             case UP:
                 moveUp();
                 break;
@@ -54,21 +55,32 @@ public class GridPosition {
         }
 
 
+        int dx = grid.colToX(col) - grid.colToX(initialCol);
+        int dy = grid.rowToY(row) - grid.rowToY(initialRow);
+
+        this.rectangle.translate(dx,dy);
+
     }
 
     private void moveUp() {
-        int maxRowsUp = Math.min(grid.getCellSize(), row);
+        int maxRowsUp = Math.min(1, row);
         setPos(col, row - maxRowsUp);
     }
 
     private void moveDown() {
-        int maxRowsDown = Math.min(grid.getCellSize(), (grid.getRows() - (row + 1)));
+        int maxRowsDown = Math.min(1, (grid.getRows() - (row + 1)));
         setPos(col, row + maxRowsDown);
     }
 
-    private void moveLeft() {}
+    private void moveLeft() {
+        int maxRowsLeft = Math.min(1, col);
+        setPos(col - maxRowsLeft, row);
+    }
 
-    private void moveRight() {}
+    private void moveRight() {
+        int maxRowsRight = Math.min(1, (grid.getCols() - (col + 1)));
+        setPos(col + maxRowsRight, row);
+    }
 
     public void setColor(org.academiadecodigo.simplegraphics.graphics.Color color) {
         rectangle.setColor(color);

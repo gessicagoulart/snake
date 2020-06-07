@@ -9,6 +9,7 @@ public class Game {
     private int rows;
     private Grid grid;
     private Snake snake;
+    private Apple apple;
 
     public Game(int cols, int rows, int delay) {
         this.cols = cols;
@@ -20,13 +21,14 @@ public class Game {
     public void init() {
         grid.init();
         snake = new Snake(grid);
+        apple = new Apple(grid);
     }
 
     public void start() throws InterruptedException {
         while (true) {
 
         Thread.sleep(delay);
-
+        snake.move(snake.getCurrentDirection());
         }
 
     }
