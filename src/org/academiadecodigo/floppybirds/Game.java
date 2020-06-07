@@ -29,6 +29,7 @@ public class Game {
 
         Thread.sleep(delay);
         snake.move(snake.getCurrentDirection());
+
         }
 
     }
