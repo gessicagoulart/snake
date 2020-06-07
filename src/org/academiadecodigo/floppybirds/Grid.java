@@ -8,13 +8,16 @@ public class Grid {
 
         public static final int PADDING = 10;
 
-        private int cols = 40;
-        private int rows = 30;
+        private int cols;
+        private int rows;
         private int cellSize = 20;
         private Rectangle background;
 
         //construtor
-        public Grid() { }
+        public Grid(int cols, int rows) {
+                this.cols = cols;
+                this.rows = rows;
+        }
 
         //inicializa o background e desenha-o
         public void init() {
