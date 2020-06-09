@@ -11,13 +11,14 @@ public class Snake implements KeyboardHandler {
     private GridDirection currentDirection;
     private GridPosition position;
     private Keyboard keyboard;
+    private int length = 3;
 
 
 
     public Snake(Grid grid) {
         this.grid = grid;
         position = grid.makeGridPosition();
-        currentDirection = GridDirection.getRandom();
+        currentDirection = GridDirection.RIGHT; //GridDirection.getRandom();
         keyboard = new Keyboard(this);
         init();
     }
@@ -80,6 +81,10 @@ public class Snake implements KeyboardHandler {
 
     public GridDirection getCurrentDirection() {
         return currentDirection;
+    }
+
+    public int getLength() {
+        return length;
     }
 
 }

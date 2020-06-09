@@ -5,10 +5,11 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class GridPosition {
 
-    private Rectangle rectangle;
+    private Rectangle[] rectangles;
     private Grid grid;
     private int col;
     private int row;
+    private int snakeLength = 3;
 
     public GridPosition(Grid grid) {
 
@@ -19,20 +20,25 @@ public class GridPosition {
         int x = grid.colToX(col);
         int y = grid.rowToY(row);
 
-        rectangle = new Rectangle(x, y, grid.getCellSize(), grid.getCellSize());
+        rectangles = new Rectangle[snakeLength];
+
+        for(int i = 0; i < snakeLength; i++) {
+            rectangles[i] = new Rectangle(grid.colToX(col+i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize());
+        }
+
         setColor(Color.GREEN);
         show();
 
     }
 
-    public GridPosition(int col, int row, Grid grid) {
+   /* public GridPosition(int col, int row, Grid grid) {
 
         int x = grid.colToX(col);
         int y = grid.rowToY(row);
         this.grid = grid;
 
         rectangle = new Rectangle(x, y, grid.getCellSize(), grid.getCellSize());
-    }
+    }*/
 
     public void moveInDirection(GridDirection direction) {
 
@@ -58,8 +64,9 @@ public class GridPosition {
         int dx = grid.colToX(col) - grid.colToX(initialCol);
         int dy = grid.rowToY(row) - grid.rowToY(initialRow);
 
-        this.rectangle.translate(dx,dy);
-
+        for(int i = 0; i < snakeLength; i++) {
+            rectangles[i].translate(dx, dy);
+        }
     }
 
     private void moveUp() {
@@ -83,11 +90,17 @@ public class GridPosition {
     }
 
     public void setColor(org.academiadecodigo.simplegraphics.graphics.Color color) {
-        rectangle.setColor(color);
+        for(int i = 0; i < snakeLength; i++) {
+            rectangles[i].setColor(color);
+        }
+
     }
 
     public void show() {
-        rectangle.fill();
+        for (int i = 0; i < snakeLength; i++) {
+           rectangles[i].fill();
+        }
+
     }
 
     public void setPos(int col, int row) {
