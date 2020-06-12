@@ -2,33 +2,28 @@ package org.academiadecodigo.floppybirds;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import java.util.LinkedList;
 
 public class GridPosition {
 
-    private Rectangle[] rectangles;
     private Grid grid;
     private int col;
     private int row;
-    private int snakeLength = 3;
+    private int snakeLength = 12;
+    private LinkedList<Rectangle> snakeBody = new LinkedList<>();
+    private Color snakeColor = Color.GREEN;
+    private int counter = 10;
 
     public GridPosition(Grid grid) {
-
+        this.grid = grid;
         col = (int) (Math.random() * grid.getCols());
         row = (int) (Math.random() * grid.getRows());
-        this.grid = grid;
-
-        int x = grid.colToX(col);
-        int y = grid.rowToY(row);
-
-        rectangles = new Rectangle[snakeLength];
 
         for(int i = 0; i < snakeLength; i++) {
-            rectangles[i] = new Rectangle(grid.colToX(col+i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize());
+            snakeBody.add(new Rectangle(grid.colToX(col+i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
         }
 
-        setColor(Color.GREEN);
         show();
-
     }
 
    /* public GridPosition(int col, int row, Grid grid) {
@@ -47,31 +42,48 @@ public class GridPosition {
 
         switch (direction) {
             case UP:
-                moveUp();
+                if (row <= 0) {
+                    row = grid.getRows() - 1;
+                } else {
+                    row--;
+                }
                 break;
             case DOWN:
-                moveDown();
+                if (row >= grid.getRows() - 1) {
+                    row = 0;
+                } else {
+                    row ++;
+                }
                 break;
             case LEFT:
-                moveLeft();
+                if (col <= 0) {
+                    col = grid.getCols() - 1;
+                } else {
+                    col--;
+                }
                 break;
             case RIGHT:
-                moveRight();
+                if (col >= grid.getCols() - 1) {
+                    col = 0;
+                } else {
+                    col++;
+                }
                 break;
         }
 
-
-        int dx = grid.colToX(col) - grid.colToX(initialCol);
-        int dy = grid.rowToY(row) - grid.rowToY(initialRow);
-
-        for(int i = 0; i < snakeLength; i++) {
-            rectangles[i].translate(dx, dy);
+        clear();
+        if (counter != 1) {
+            snakeBody.removeLast();
         }
+        snakeBody.push(new Rectangle(grid.colToX(col), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+        show();
+        counter--;
+
     }
 
     private void moveUp() {
         int maxRowsUp = Math.min(1, row);
-        setPos(col, row - maxRowsUp);
+        row = row - maxRowsUp;
     }
 
     private void moveDown() {
@@ -90,17 +102,22 @@ public class GridPosition {
     }
 
     public void setColor(org.academiadecodigo.simplegraphics.graphics.Color color) {
-        for(int i = 0; i < snakeLength; i++) {
-            rectangles[i].setColor(color);
-        }
+            for(Rectangle rectangle : snakeBody) {
+                rectangle.setColor(color);
+            }
+    }
 
+    public void clear() {
+        for(Rectangle rectangle : snakeBody) {
+            rectangle.delete();
+        }
     }
 
     public void show() {
-        for (int i = 0; i < snakeLength; i++) {
-           rectangles[i].fill();
+        for(Rectangle rectangle : snakeBody) {
+            rectangle.setColor(snakeColor);
+            rectangle.fill();
         }
-
     }
 
     public void setPos(int col, int row) {

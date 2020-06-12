@@ -19,18 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e267b9-3f75-494b-9c44-49534770578a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/simple_graphics_0_2_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/simple_graphics_0_2_1_SNAPSHOT2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Snake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/snake.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Game.java" afterDir="false" />
+    <list default="true" id="80e267b9-3f75-494b-9c44-49534770578a" name="Default Changelist" comment="GridPosition now has an array of rectangles instead of just one rectangle">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/GridPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/GridPosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Snake.java" afterDir="false" />
     </list>
@@ -85,6 +75,14 @@
       <option name="presentableId" value="Default" />
       <updated>1591640087365</updated>
     </task>
+    <task id="LOCAL-00001" summary="GridPosition now has an array of rectangles instead of just one rectangle">
+      <created>1591741079665</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591741079665</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,30 +97,42 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GridPosition now has an array of rectangles instead of just one rectangle" />
+    <option name="LAST_COMMIT_MESSAGE" value="GridPosition now has an array of rectangles instead of just one rectangle" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1436" height="292" key="GridCell.Tab.0.bottom" timestamp="1591740933068">
-      <screen x="0" y="195" width="1680" height="1050" />
+    <state x="2849" y="605" key="#Notifications" timestamp="1591953650303">
+      <screen x="1680" y="0" width="2560" height="1440" />
     </state>
+    <state x="2849" y="605" key="#Notifications/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591953650303" />
+    <state width="2514" height="299" key="GridCell.Tab.0.bottom" timestamp="1591960853133">
+      <screen x="1680" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2514" height="301" key="GridCell.Tab.0.bottom/0.28.2560.1412@0.28.2560.1412" timestamp="1591741381715" />
     <state width="1444" height="404" key="GridCell.Tab.0.bottom/0.28.4240.1412@0.28.4240.1412" timestamp="1591703399339" />
     <state width="1436" height="292" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1591740933068" />
-    <state width="2514" height="404" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591733383883" />
-    <state width="1436" height="292" key="GridCell.Tab.0.center" timestamp="1591740933067">
-      <screen x="0" y="195" width="1680" height="1050" />
+    <state width="2514" height="299" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591960853133" />
+    <state width="2514" height="299" key="GridCell.Tab.0.center" timestamp="1591960853133">
+      <screen x="1680" y="0" width="2560" height="1440" />
     </state>
+    <state width="2514" height="301" key="GridCell.Tab.0.center/0.28.2560.1412@0.28.2560.1412" timestamp="1591741381715" />
     <state width="1444" height="404" key="GridCell.Tab.0.center/0.28.4240.1412@0.28.4240.1412" timestamp="1591703399338" />
     <state width="1436" height="292" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1591740933067" />
-    <state width="2514" height="404" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591733383883" />
-    <state width="1436" height="292" key="GridCell.Tab.0.left" timestamp="1591740933067">
-      <screen x="0" y="195" width="1680" height="1050" />
+    <state width="2514" height="299" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591960853133" />
+    <state width="2514" height="299" key="GridCell.Tab.0.left" timestamp="1591960853133">
+      <screen x="1680" y="0" width="2560" height="1440" />
     </state>
+    <state width="2514" height="301" key="GridCell.Tab.0.left/0.28.2560.1412@0.28.2560.1412" timestamp="1591741381715" />
     <state width="1444" height="404" key="GridCell.Tab.0.left/0.28.4240.1412@0.28.4240.1412" timestamp="1591703399338" />
     <state width="1436" height="292" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1591740933067" />
-    <state width="2514" height="404" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591733383883" />
-    <state width="1436" height="292" key="GridCell.Tab.0.right" timestamp="1591740933067">
-      <screen x="0" y="195" width="1680" height="1050" />
+    <state width="2514" height="299" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591960853133" />
+    <state width="2514" height="299" key="GridCell.Tab.0.right" timestamp="1591960853133">
+      <screen x="1680" y="0" width="2560" height="1440" />
     </state>
+    <state width="2514" height="301" key="GridCell.Tab.0.right/0.28.2560.1412@0.28.2560.1412" timestamp="1591741381715" />
     <state width="1444" height="404" key="GridCell.Tab.0.right/0.28.4240.1412@0.28.4240.1412" timestamp="1591703399338" />
     <state width="1436" height="292" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1591740933067" />
-    <state width="2514" height="404" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591733383883" />
+    <state width="2514" height="299" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1591960853133" />
   </component>
 </project>
