@@ -102,9 +102,9 @@ public class GridPosition {
     }
 
     public void setColor(org.academiadecodigo.simplegraphics.graphics.Color color) {
-            for(Rectangle rectangle : snakeBody) {
-                rectangle.setColor(color);
-            }
+        for(Rectangle rectangle : snakeBody) {
+            rectangle.setColor(color);
+        }
     }
 
     public void clear() {
@@ -125,4 +125,5 @@ public class GridPosition {
         this.row = row;
         show();
     }
+    public LinkedList<Rectangle> getSnakeBody(){return snakeBody;}
 }
