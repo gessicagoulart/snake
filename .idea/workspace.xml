@@ -21,12 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="081bcf98-05dc-47dc-b9e7-748795928e29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Apple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Apple.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Snake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Apple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/CollisionDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/CollisionDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Grid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/org/academiadecodigo/floppybirds/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/academiadecodigo/floppybirds/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,26 +103,26 @@
       <screen x="0" y="195" width="1680" height="1050" />
     </state>
     <state x="696" y="495" key="FileChooserDialogImpl/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592065274166" />
-    <state width="2514" height="318" key="GridCell.Tab.0.bottom" timestamp="1592073159018">
-      <screen x="1680" y="0" width="2560" height="1440" />
+    <state width="2514" height="317" key="GridCell.Tab.0.bottom" timestamp="1592075150753">
+      <screen x="0" y="195" width="1680" height="1050" />
     </state>
-    <state width="1626" height="222" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592071662791" />
-    <state width="2514" height="318" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592073159018" />
-    <state width="2514" height="318" key="GridCell.Tab.0.center" timestamp="1592073159018">
-      <screen x="1680" y="0" width="2560" height="1440" />
+    <state width="2514" height="317" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592075150753" />
+    <state width="2514" height="317" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592074178693" />
+    <state width="2514" height="317" key="GridCell.Tab.0.center" timestamp="1592075150753">
+      <screen x="0" y="195" width="1680" height="1050" />
     </state>
-    <state width="1626" height="222" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592071662791" />
-    <state width="2514" height="318" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592073159018" />
-    <state width="2514" height="318" key="GridCell.Tab.0.left" timestamp="1592073159018">
-      <screen x="1680" y="0" width="2560" height="1440" />
+    <state width="2514" height="317" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592075150753" />
+    <state width="2514" height="317" key="GridCell.Tab.0.center/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592074178693" />
+    <state width="2514" height="317" key="GridCell.Tab.0.left" timestamp="1592075150753">
+      <screen x="0" y="195" width="1680" height="1050" />
     </state>
-    <state width="1626" height="222" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592071662791" />
-    <state width="2514" height="318" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592073159018" />
-    <state width="2514" height="318" key="GridCell.Tab.0.right" timestamp="1592073159018">
-      <screen x="1680" y="0" width="2560" height="1440" />
+    <state width="2514" height="317" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592075150753" />
+    <state width="2514" height="317" key="GridCell.Tab.0.left/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592074178693" />
+    <state width="2514" height="317" key="GridCell.Tab.0.right" timestamp="1592075150753">
+      <screen x="0" y="195" width="1680" height="1050" />
     </state>
-    <state width="1626" height="222" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592071662791" />
-    <state width="2514" height="318" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592073159018" />
+    <state width="2514" height="317" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592075150753" />
+    <state width="2514" height="317" key="GridCell.Tab.0.right/1680.0.2560.1440/0.195.1680.1050@1680.0.2560.1440" timestamp="1592074178693" />
     <state width="1230" height="403" key="GridCell.Tab.1.bottom" timestamp="1592067030018">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
@@ -142,5 +143,9 @@
       <screen x="0" y="195" width="1680" height="1050" />
     </state>
     <state x="216" y="332" key="new project wizard/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592065192537" />
+    <state x="943" y="351" width="672" height="678" key="search.everywhere.popup" timestamp="1592074981169">
+      <screen x="0" y="195" width="1680" height="1050" />
+    </state>
+    <state x="943" y="351" width="672" height="678" key="search.everywhere.popup/1680.0.2560.1440/0.195.1680.1050@0.195.1680.1050" timestamp="1592074981169" />
   </component>
 </project>
