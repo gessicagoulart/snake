@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
-<project name="JarResources" default="jarfile">
+<project name="snake" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
       <!-- change the value below into your game name-->
-        <property name="project.name" value="project name here" />
+        <property name="project.name" value="snake" />
         <property name="src.dir" value="src" />
       <!-- dont forget to add your entry point classpath here -->
-        <property name="main.class" value="org.academiadecodigo.test.Main" />
+        <property name="main.class" value="org.academiadecodigo.floppybirds.Main" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
