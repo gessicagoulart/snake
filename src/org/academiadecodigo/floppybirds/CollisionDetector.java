@@ -20,11 +20,11 @@ public class CollisionDetector {
         }
         return false;
     }
-    /*public boolean check(Apple apple){
+    public boolean check(Apple apple){
         Rectangle head = snake.getFirst();
-       if(head.getY()==apple.getX&&head.getY()==apple.getY){
+       if(head.getY()==apple.getApple().getX()&&head.getY()==apple.getApple().getY()){
            return true;
         }
         return false;
-    }*/
+    }
 }

@@ -88,15 +88,13 @@ public class Snake implements KeyboardHandler {
         return length;
     }
     public boolean snakeCollision() throws InterruptedException {
-        if(detect.check()){
-            int i=10;
-            while(i>0){
+
+            while(detect.check()){
                 Thread.sleep(300);
                 position.clear();
                 Thread.sleep(300);
                 position.show();
             }
-        }
         return detect.check();
     }
 
