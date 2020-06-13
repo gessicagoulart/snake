@@ -19,7 +19,6 @@ public class Snake implements KeyboardHandler {
     private int row;
     private Keyboard keyboard;
     private boolean ateApple;
-    private int score;
     private CollisionDetector collisionDetector;
     public static final int INITIAL_LENGTH = 3;
     public static final Color COLOR = Color.GREEN;
@@ -35,7 +34,7 @@ public class Snake implements KeyboardHandler {
 
 
         for(int i = 0; i < INITIAL_LENGTH; i++) {
-            body.add(new Rectangle(grid.colToX(col+i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+            body.add(new Rectangle(grid.colToX(col+i), grid.rowToY(row+i), grid.getCellSize(), grid.getCellSize()));
         }
 
         show();
@@ -78,7 +77,6 @@ public class Snake implements KeyboardHandler {
         if (!ateApple) {
             body.removeLast();
         } else {
-            score++;
             ateApple = false;
         }
         body.push(new Rectangle(grid.colToX(col), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
@@ -108,6 +106,7 @@ public class Snake implements KeyboardHandler {
         }
         return collisionDetector.check();
     }
+
 
     public void init() {
 
@@ -156,7 +155,6 @@ public class Snake implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
     }
 
     public GridDirection getCurrentDirection() {
@@ -166,7 +164,6 @@ public class Snake implements KeyboardHandler {
 
     public void setAteApple() {
         ateApple = true;
-        score++;
     }
 
     public LinkedList<Rectangle> getBody(){

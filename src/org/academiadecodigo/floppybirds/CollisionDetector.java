@@ -24,7 +24,7 @@ public class CollisionDetector {
 
     public boolean check(Apple apple) {
         Rectangle head = snakeBody.getFirst();
-        if (head.getX() == apple.getEllipse().getX() && head.getY() == apple.getEllipse().getY()) {
+        if (head.getX() == apple.getApple().getX() && head.getY() == apple.getApple().getY()) {
             snake.setAteApple();
             return true;
         }

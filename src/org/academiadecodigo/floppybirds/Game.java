@@ -8,6 +8,7 @@ public class Game {
     private Grid grid;
     private Snake snake;
     private Apple apple;
+    private int score;
     private CollisionDetector collisionDetector;
 
     public Game(int cols, int rows, int delay) {
@@ -29,6 +30,7 @@ public class Game {
             Thread.sleep(delay);
             if(collisionDetector.check(apple)) {
                 apple.delete();
+                score++;
                 apple = new Apple(grid);
 
             }
