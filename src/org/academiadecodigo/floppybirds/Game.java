@@ -17,7 +17,7 @@ public class Game {
     public void init() {
         grid.init();
         snake = new org.academiadecodigo.floppybirds.Snake(grid);
-        //apple = new Apple(grid);
+        apple = new Apple(grid);
     }
 
     public void start() throws InterruptedException {
