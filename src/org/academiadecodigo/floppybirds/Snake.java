@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import java.util.LinkedList;
 
 
-public class Snake implements KeyboardHandler {
+public class Snake {
 
     private Grid grid;
     private GridDirection currentDirection;
@@ -25,20 +25,36 @@ public class Snake implements KeyboardHandler {
 
     public Snake(Grid grid) {
         this.grid = grid;
-        currentDirection = GridDirection.getRandom();
+        currentDirection = GridDirection.DOWN;//GridDirection.getRandom();
         body = new LinkedList<>();
         col = (int) (Math.random() * grid.getCols());
         row = (int) (Math.random() * grid.getRows());
         collisionDetector = new CollisionDetector(this);
-        keyboard = new Keyboard(this);
 
-
-        for(int i = 0; i < INITIAL_LENGTH; i++) {
-            body.add(new Rectangle(grid.colToX(col+i), grid.rowToY(row+i), grid.getCellSize(), grid.getCellSize()));
+        switch (currentDirection) {
+            case UP:
+                for (int i = 0; i < INITIAL_LENGTH; i++) {
+                    body.add(new Rectangle(grid.colToX(col), grid.rowToY(row + i), grid.getCellSize(), grid.getCellSize()));
+                }
+                break;
+            case DOWN:
+                for (int i = 0; i < INITIAL_LENGTH; i++) {
+                    body.add(new Rectangle(grid.colToX(col), grid.rowToY(row - i), grid.getCellSize(), grid.getCellSize()));
+                }
+                break;
+            case LEFT:
+                for(int i = 0; i < INITIAL_LENGTH; i++) {
+                    body.add(new Rectangle(grid.colToX(col + i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+                }
+                break;
+            case RIGHT:
+                for(int i = 0; i < INITIAL_LENGTH; i++) {
+                    body.add(new Rectangle(grid.colToX(col - i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+                }
+                break;
         }
 
         show();
-        init();
     }
 
     public void move(GridDirection direction) {
@@ -108,59 +124,13 @@ public class Snake implements KeyboardHandler {
     }
 
 
-    public void init() {
-
-        KeyboardEvent up = new KeyboardEvent();
-        up.setKey(KeyboardEvent.KEY_UP);
-        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        KeyboardEvent down = new KeyboardEvent();
-        down.setKey(KeyboardEvent.KEY_DOWN);
-        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        KeyboardEvent left = new KeyboardEvent();
-        left.setKey(KeyboardEvent.KEY_LEFT);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        KeyboardEvent right = new KeyboardEvent();
-        right.setKey(KeyboardEvent.KEY_RIGHT);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        keyboard.addEventListener(left);
-        keyboard.addEventListener(right);
-        keyboard.addEventListener(up);
-        keyboard.addEventListener(down);
-
-    }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-
-        switch (keyboardEvent.getKey()) {
-            case KeyboardEvent.KEY_LEFT:
-                if (currentDirection != GridDirection.RIGHT) currentDirection = GridDirection.LEFT;
-                break;
-            case KeyboardEvent.KEY_RIGHT:
-                if (currentDirection != GridDirection.LEFT) currentDirection = GridDirection.RIGHT;
-                break;
-            case KeyboardEvent.KEY_UP:
-                if (currentDirection != GridDirection.DOWN) currentDirection = GridDirection.UP;
-                break;
-            case KeyboardEvent.KEY_DOWN:
-                if (currentDirection != GridDirection.UP) currentDirection = GridDirection.DOWN;
-                break;
-        }
-
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-    }
-
     public GridDirection getCurrentDirection() {
         return currentDirection;
     }
 
+    public void setCurrentDirection(GridDirection direction) {
+        currentDirection = direction;
+    }
 
     public void setAteApple() {
         ateApple = true;
