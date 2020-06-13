@@ -9,10 +9,10 @@ public class GridPosition {
     private Grid grid;
     private int col;
     private int row;
-    private int snakeLength = 12;
+    private int snakeLength = 10;
     private LinkedList<Rectangle> snakeBody = new LinkedList<>();
     private Color snakeColor = Color.GREEN;
-    private int counter = 10;
+    private int counter = 0;
 
     public GridPosition(Grid grid) {
         this.grid = grid;
@@ -22,8 +22,9 @@ public class GridPosition {
         for(int i = 0; i < snakeLength; i++) {
             snakeBody.add(new Rectangle(grid.colToX(col+i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
         }
+        //snakeBody.add(new Rectangle(grid.colToX(col), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
 
-        show();
+        showAll();
     }
 
    /* public GridPosition(int col, int row, Grid grid) {
@@ -71,11 +72,12 @@ public class GridPosition {
                 break;
         }
 
-        clear();
-        if (counter != 1) {
-            snakeBody.removeLast();
+        //clearAll();
+        if (counter != 0) {
+            //snakeBody.removeLast();
+            clear();
         }
-        snakeBody.push(new Rectangle(grid.colToX(col), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+        snakeBody.addFirst(new Rectangle(grid.colToX(col), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
         show();
         counter--;
 
@@ -107,23 +109,37 @@ public class GridPosition {
             }
     }
 
-    public void clear() {
+    public void clearAll() {
         for(Rectangle rectangle : snakeBody) {
             rectangle.delete();
         }
     }
+    public void clear(){
 
-    public void show() {
+       snakeBody.getLast().delete();
+       snakeBody.removeLast();
+
+
+    }
+
+    public void showAll() {
         for(Rectangle rectangle : snakeBody) {
             rectangle.setColor(snakeColor);
             rectangle.fill();
         }
     }
+    public void show() {
+        snakeBody.getFirst().setColor(snakeColor);
+        snakeBody.getFirst().fill();
+    }
 
     public void setPos(int col, int row) {
         this.col = col;
         this.row = row;
-        show();
+        showAll();
+    }
+    public LinkedList<Rectangle> getSnakeBody(){
+        return snakeBody;
     }
 
     public LinkedList<Rectangle> getSnakeBody() {
