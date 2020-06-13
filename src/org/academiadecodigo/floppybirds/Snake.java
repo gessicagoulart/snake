@@ -12,6 +12,7 @@ public class Snake implements KeyboardHandler {
     private Grid grid;
     private GridDirection currentDirection;
     private GridPosition position;
+    private org.academiadecodigo.floppybirds.CollisionDetector detect;
     private Keyboard keyboard;
     private int length = 3;
 
@@ -19,6 +20,7 @@ public class Snake implements KeyboardHandler {
     public Snake(Grid grid) {
         this.grid = grid;
         position = grid.makeGridPosition();
+        detect = new org.academiadecodigo.floppybirds.CollisionDetector(position);
         currentDirection = GridDirection.getRandom();
         keyboard = new Keyboard(this);
         init();
@@ -26,28 +28,28 @@ public class Snake implements KeyboardHandler {
 
     public void init() {
 
-            KeyboardEvent up = new KeyboardEvent();
-            up.setKey(KeyboardEvent.KEY_UP);
-            up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent up = new KeyboardEvent();
+        up.setKey(KeyboardEvent.KEY_UP);
+        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-            KeyboardEvent down = new KeyboardEvent();
-            down.setKey(KeyboardEvent.KEY_DOWN);
-            down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent down = new KeyboardEvent();
+        down.setKey(KeyboardEvent.KEY_DOWN);
+        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-            KeyboardEvent left = new KeyboardEvent();
-            left.setKey(KeyboardEvent.KEY_LEFT);
-            left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent left = new KeyboardEvent();
+        left.setKey(KeyboardEvent.KEY_LEFT);
+        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-            KeyboardEvent right = new KeyboardEvent();
-            right.setKey(KeyboardEvent.KEY_RIGHT);
-            right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent right = new KeyboardEvent();
+        right.setKey(KeyboardEvent.KEY_RIGHT);
+        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-            keyboard.addEventListener(left);
-            keyboard.addEventListener(right);
-            keyboard.addEventListener(up);
-            keyboard.addEventListener(down);
+        keyboard.addEventListener(left);
+        keyboard.addEventListener(right);
+        keyboard.addEventListener(up);
+        keyboard.addEventListener(down);
 
-        }
+    }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
@@ -84,6 +86,18 @@ public class Snake implements KeyboardHandler {
 
     public int getLength() {
         return length;
+    }
+    public boolean snakeCollision() throws InterruptedException {
+        if(detect.check()){
+            int i=10;
+            while(i>0){
+                Thread.sleep(300);
+                position.clear();
+                Thread.sleep(300);
+                position.show();
+            }
+        }
+        return detect.check();
     }
 
 }

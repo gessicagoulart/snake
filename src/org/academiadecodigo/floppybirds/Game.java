@@ -6,7 +6,7 @@ public class Game {
 
     private int delay;
     private Grid grid;
-    private Snake snake;
+    private org.academiadecodigo.floppybirds.Snake snake;
     private Apple apple;
 
     public Game(int cols, int rows, int delay) {
@@ -16,15 +16,16 @@ public class Game {
 
     public void init() {
         grid.init();
-        snake = new Snake(grid);
+        snake = new org.academiadecodigo.floppybirds.Snake(grid);
         //apple = new Apple(grid);
     }
 
     public void start() throws InterruptedException {
-        while (true) {
 
-        Thread.sleep(delay);
-        snake.move(snake.getCurrentDirection());
+        while (!snake.snakeCollision()) {
+
+            Thread.sleep(delay);
+            snake.move(snake.getCurrentDirection());
 
         }
 

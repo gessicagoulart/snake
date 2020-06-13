@@ -1,5 +1,30 @@
 package org.academiadecodigo.floppybirds;
 
-public class CollisionDetector {
+import java.awt.*;
+import java.util.LinkedList;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+public class CollisionDetector {
+    private LinkedList<Rectangle> snake;
+
+    public CollisionDetector(GridPosition snake){
+        this.snake = snake.getSnakeBody();
+
+    }
+    public boolean check(){
+        Rectangle head = snake.getFirst();
+        for (Rectangle element:snake){
+            if(snake.getFirst()!=element&&snake.getFirst().getX()==element.getX()&&snake.getFirst().getY()==element.getY()){
+                return true;
+            }
+        }
+        return false;
+    }
+    /*public boolean check(Apple apple){
+        Rectangle head = snake.getFirst();
+       if(head.getY()==apple.getX&&head.getY()==apple.getY){
+           return true;
+        }
+        return false;
+    }*/
 }

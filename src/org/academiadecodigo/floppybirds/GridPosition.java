@@ -125,4 +125,8 @@ public class GridPosition {
         this.row = row;
         show();
     }
+
+    public LinkedList<Rectangle> getSnakeBody() {
+        return snakeBody;
+    }
 }
