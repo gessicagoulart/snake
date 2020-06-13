@@ -21,12 +21,14 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
-        while (true) {
+        while (!snake.detect()) {
+
 
         Thread.sleep(delay);
         snake.move(snake.getCurrentDirection());
-
+        //snake.getPosition().add
         }
+
 
     }
 }

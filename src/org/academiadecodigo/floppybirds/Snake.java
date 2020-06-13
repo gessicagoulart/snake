@@ -1,6 +1,5 @@
 package org.academiadecodigo.floppybirds;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -13,12 +12,14 @@ public class Snake implements KeyboardHandler {
     private GridDirection currentDirection;
     private GridPosition position;
     private Keyboard keyboard;
-    private int length = 3;
+    private CollisionDetector collisionDetector;
+    private int length = 4;
 
 
     public Snake(Grid grid) {
         this.grid = grid;
         position = grid.makeGridPosition();
+        this.collisionDetector = new CollisionDetector(position);
         currentDirection = GridDirection.getRandom();
         keyboard = new Keyboard(this);
         init();
@@ -84,6 +85,22 @@ public class Snake implements KeyboardHandler {
 
     public int getLength() {
         return length;
+    }
+
+    public boolean detect() throws InterruptedException {
+        if(collisionDetector.check()){
+            int i= 10;
+            while(i>0) {
+               Thread.sleep(300);
+               position.clearAll();
+               Thread.sleep(300);
+               position.showAll();}
+            return true;
+        }
+        return false;
+    }
+    public GridPosition getPosition(){
+        return position;
     }
 
 }
