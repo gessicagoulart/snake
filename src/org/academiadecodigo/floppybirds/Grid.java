@@ -26,9 +26,7 @@ public class Grid {
         background.fill();
         }
 
-        public GridPosition makeGridPosition() {
-                return new GridPosition(this);
-        }
+
 
         public int getCols() {
                 return cols;

@@ -1,29 +1,112 @@
 package org.academiadecodigo.floppybirds;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.util.LinkedList;
+
 
 public class Snake implements KeyboardHandler {
 
     private Grid grid;
     private GridDirection currentDirection;
-    private GridPosition position;
-    private org.academiadecodigo.floppybirds.CollisionDetector detect;
+    private LinkedList<Rectangle> body;
+    private int col;
+    private int row;
     private Keyboard keyboard;
-    private int length = 3;
-
+    private boolean ateApple;
+    private int score;
+    private CollisionDetector collisionDetector;
+    public static final int INITIAL_LENGTH = 3;
+    public static final Color COLOR = Color.GREEN;
 
     public Snake(Grid grid) {
         this.grid = grid;
-        position = grid.makeGridPosition();
-        detect = new org.academiadecodigo.floppybirds.CollisionDetector(position);
         currentDirection = GridDirection.getRandom();
+        body = new LinkedList<>();
+        col = (int) (Math.random() * grid.getCols());
+        row = (int) (Math.random() * grid.getRows());
+        collisionDetector = new CollisionDetector(this);
         keyboard = new Keyboard(this);
+
+
+        for(int i = 0; i < INITIAL_LENGTH; i++) {
+            body.add(new Rectangle(grid.colToX(col+i), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+        }
+
+        show();
         init();
+    }
+
+    public void move(GridDirection direction) {
+        switch (direction) {
+            case UP:
+                if (row <= 0) {
+                    row = grid.getRows() - 1;
+                } else {
+                    row--;
+                }
+                break;
+            case DOWN:
+                if (row >= grid.getRows() - 1) {
+                    row = 0;
+                } else {
+                    row ++;
+                }
+                break;
+            case LEFT:
+                if (col <= 0) {
+                    col = grid.getCols() - 1;
+                } else {
+                    col--;
+                }
+                break;
+            case RIGHT:
+                if (col >= grid.getCols() - 1) {
+                    col = 0;
+                } else {
+                    col++;
+                }
+                break;
+        }
+
+        clear();
+        if (!ateApple) {
+            body.removeLast();
+        } else {
+            score++;
+            ateApple = false;
+        }
+        body.push(new Rectangle(grid.colToX(col), grid.rowToY(row), grid.getCellSize(), grid.getCellSize()));
+        show();
+    }
+
+    public void clear() {
+        for(Rectangle rectangle : body) {
+            rectangle.delete();
+        }
+    }
+
+    public void show() {
+        for(Rectangle rectangle : body) {
+            rectangle.setColor(COLOR);
+            rectangle.fill();
+        }
+    }
+
+    public boolean snakeCollision() throws InterruptedException {
+
+        while(collisionDetector.check()){
+            Thread.sleep(300);
+            clear();
+            Thread.sleep(300);
+            show();
+        }
+        return collisionDetector.check();
     }
 
     public void init() {
@@ -76,26 +159,21 @@ public class Snake implements KeyboardHandler {
 
     }
 
-    public void move(GridDirection direction) {
-        position.moveInDirection(direction);
-    }
-
     public GridDirection getCurrentDirection() {
         return currentDirection;
     }
 
-    public int getLength() {
-        return length;
-    }
-    public boolean snakeCollision() throws InterruptedException {
 
-            while(detect.check()){
-                Thread.sleep(300);
-                position.clear();
-                Thread.sleep(300);
-                position.show();
-            }
-        return detect.check();
+    public void setAteApple() {
+        ateApple = true;
+        score++;
     }
+
+    public LinkedList<Rectangle> getBody(){
+        return body;
+    }
+
+
+
 
 }

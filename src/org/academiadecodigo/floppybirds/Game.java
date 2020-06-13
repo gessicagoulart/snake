@@ -6,8 +6,9 @@ public class Game {
 
     private int delay;
     private Grid grid;
-    private org.academiadecodigo.floppybirds.Snake snake;
+    private Snake snake;
     private Apple apple;
+    private CollisionDetector collisionDetector;
 
     public Game(int cols, int rows, int delay) {
         this.delay = delay;
@@ -16,8 +17,9 @@ public class Game {
 
     public void init() {
         grid.init();
-        snake = new org.academiadecodigo.floppybirds.Snake(grid);
+        snake = new Snake(grid);
         apple = new Apple(grid);
+        collisionDetector = new CollisionDetector(snake);
     }
 
     public void start() throws InterruptedException {
@@ -25,9 +27,13 @@ public class Game {
         while (!snake.snakeCollision()) {
 
             Thread.sleep(delay);
+            if(collisionDetector.check(apple)) {
+                apple.delete();
+                apple = new Apple(grid);
+
+            }
             snake.move(snake.getCurrentDirection());
-
         }
-
     }
+
 }

@@ -1,30 +1,34 @@
 package org.academiadecodigo.floppybirds;
 
-import java.awt.*;
 import java.util.LinkedList;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class CollisionDetector {
-    private LinkedList<Rectangle> snake;
+    private LinkedList<Rectangle> snakeBody;
+    private Snake snake;
 
-    public CollisionDetector(GridPosition snake){
-        this.snake = snake.getSnakeBody();
-
+    public CollisionDetector(Snake snake){
+        snakeBody = snake.getBody();
+        this.snake = snake;
     }
+
     public boolean check(){
-        Rectangle head = snake.getFirst();
-        for (Rectangle element:snake){
-            if(snake.getFirst()!=element&&snake.getFirst().getX()==element.getX()&&snake.getFirst().getY()==element.getY()){
+        Rectangle head = snakeBody.getFirst();
+        for (Rectangle rectangle : snakeBody){
+            if(head != rectangle && snakeBody.getFirst().getX() == rectangle.getX() && head.getY() == rectangle.getY()){
                 return true;
             }
         }
         return false;
     }
-    public boolean check(Apple apple){
-        Rectangle head = snake.getFirst();
-       if(head.getY()==apple.getApple().getX()&&head.getY()==apple.getApple().getY()){
-           return true;
+
+    public boolean check(Apple apple) {
+        Rectangle head = snakeBody.getFirst();
+        if (head.getX() == apple.getEllipse().getX() && head.getY() == apple.getEllipse().getY()) {
+            snake.setAteApple();
+            return true;
         }
         return false;
     }
+
 }
