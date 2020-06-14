@@ -10,9 +10,6 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Menu implements KeyboardHandler {
 
-
-
-
     private int delay;
     private Grid grid;
     private Keyboard keyboard;

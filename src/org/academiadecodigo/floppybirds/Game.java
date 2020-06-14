@@ -134,7 +134,7 @@ public class Game implements KeyboardHandler {
 
     public void snakeCollision() throws InterruptedException {
         int counter = 0;
-        while (collisionDetector.check()) {
+        while (collisionDetector.check() && !stop) {
             gameOver = true;
             Thread.sleep(300);
             snake.clear();
@@ -180,10 +180,14 @@ public class Game implements KeyboardHandler {
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_SPACE:
-                if (!paused) {
-                    paused = true;
-                } else {
-                    paused = false;
+                if (!gameOver) {
+                    if (!paused) {
+                        paused = true;
+                    } else {
+                        paused = false;
+                    }
+                } if (gameOver) {
+                    stop = true;
                 }
                 break;
             case KeyboardEvent.KEY_Z:
