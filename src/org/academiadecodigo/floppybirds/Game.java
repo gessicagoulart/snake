@@ -20,6 +20,7 @@ public class Game implements KeyboardHandler {
     private Keyboard keyboard;
     private boolean paused;
     private boolean gameOver;
+    private boolean stop;
     private Sound eat;
     private Sound gameOverSound;
     private Sound menuSound;
@@ -75,6 +76,10 @@ public class Game implements KeyboardHandler {
         esc.setKey(KeyboardEvent.KEY_ESC);
         esc.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent menu = new KeyboardEvent();
+        menu.setKey(KeyboardEvent.KEY_M);
+        menu.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         keyboard.addEventListener(left);
         keyboard.addEventListener(right);
         keyboard.addEventListener(up);
@@ -83,11 +88,12 @@ public class Game implements KeyboardHandler {
         keyboard.addEventListener(plus);
         keyboard.addEventListener(minus);
         keyboard.addEventListener(esc);
+        keyboard.addEventListener(menu);
     }
 
     public void start() throws InterruptedException {
 
-        while (!gameOver) {
+        while (!stop||!gameOver) {
             if (paused) {
                 Thread.sleep(delay);
             } else {
@@ -97,6 +103,12 @@ public class Game implements KeyboardHandler {
                 snake.move(snake.getCurrentDirection());
             }
         }
+        /*if (stop) {
+            Menu g = new Menu(40, 30);
+            g.menu();
+            g.play();
+        }*/
+
     }
 
     public void appleCollision() {
@@ -155,6 +167,10 @@ public class Game implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_ESC:
                 System.exit(0);
+                break;
+            case KeyboardEvent.KEY_M:
+                System.out.println(""+ stop);
+                stop=true;
                 break;
         }
 
