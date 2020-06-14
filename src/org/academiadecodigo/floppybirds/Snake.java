@@ -3,10 +3,6 @@ package org.academiadecodigo.floppybirds;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
 import java.util.LinkedList;
 
 
@@ -19,17 +15,16 @@ public class Snake {
     private int row;
     private Keyboard keyboard;
     private boolean ateApple;
-    private CollisionDetector collisionDetector;
     public static final int INITIAL_LENGTH = 3;
     public static final Color COLOR = Color.GREEN;
 
     public Snake(Grid grid) {
+
         this.grid = grid;
         currentDirection = GridDirection.DOWN;//GridDirection.getRandom();
         body = new LinkedList<>();
         col = (int) (Math.random() * grid.getCols());
         row = (int) (Math.random() * grid.getRows());
-        collisionDetector = new CollisionDetector(this);
 
         switch (currentDirection) {
             case UP:
@@ -58,6 +53,7 @@ public class Snake {
     }
 
     public void move(GridDirection direction) {
+
         switch (direction) {
             case UP:
                 if (row <= 0) {
@@ -89,8 +85,8 @@ public class Snake {
                 break;
         }
 
-        clear();
         if (!ateApple) {
+            body.getLast().delete();
             body.removeLast();
         } else {
             ateApple = false;
@@ -100,29 +96,19 @@ public class Snake {
     }
 
     public void clear() {
+
         for(Rectangle rectangle : body) {
             rectangle.delete();
         }
     }
 
     public void show() {
+
         for(Rectangle rectangle : body) {
             rectangle.setColor(COLOR);
             rectangle.fill();
         }
     }
-
-    public boolean snakeCollision() throws InterruptedException {
-
-        while(collisionDetector.check()){
-            Thread.sleep(300);
-            clear();
-            Thread.sleep(300);
-            show();
-        }
-        return collisionDetector.check();
-    }
-
 
     public GridDirection getCurrentDirection() {
         return currentDirection;
@@ -139,8 +125,6 @@ public class Snake {
     public LinkedList<Rectangle> getBody(){
         return body;
     }
-
-
 
 
 }

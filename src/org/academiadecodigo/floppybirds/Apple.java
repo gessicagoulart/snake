@@ -7,9 +7,10 @@ public class Apple {
     private Picture apple;
     private int col;
     private int row;
-    private String appleType;
+    private String type;
 
     public Apple(Grid grid) {
+
         col = (int) (Math.random() * grid.getCols()) * grid.getCellSize() + grid.PADDING;
         row = (int) (Math.random() * grid.getRows()) * grid.getCellSize() + grid.PADDING;
         apple = new Picture(col, row, random());
@@ -17,11 +18,12 @@ public class Apple {
     }
 
     private String random() {
+
         if ((int) (Math.random() * 100) < 70) {
-            appleType = "Red";
+            type = "Red";
             return "resources/apple3.png";
         }
-        appleType = "Golden";
+        type = "Golden";
         return "resources/apple5.png";
     }
 
@@ -34,8 +36,8 @@ public class Apple {
         return apple;
     }
 
-    public String getAppleType() {
-        return appleType;
+    public String getType() {
+        return type;
     }
 
 }
