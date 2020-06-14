@@ -35,7 +35,7 @@ public class Game implements KeyboardHandler {
 
     public void init() throws InterruptedException {
 
-        grid.init();
+        grid.init(new Color(40, 30, 20));
         score = 0;
         snake = new Snake(grid);
         apple = new Apple(grid);
