@@ -16,6 +16,9 @@ public class Game implements KeyboardHandler {
     private int score;
     private CollisionDetector collisionDetector;
     private Text scoreBoard;
+    private Text gameOverText;
+    private Text backToMenuText;
+    private Text keyText;
     private Keyboard keyboard;
     private boolean paused;
     private boolean gameOver;
@@ -27,7 +30,12 @@ public class Game implements KeyboardHandler {
     public Game(int cols, int rows) throws InterruptedException {
         //this.delay = Math.max(50, 200 - score / 50 * 8);
         grid = new Grid(cols, rows);
+        int height = grid.rowToY(rows);
+        int width = grid.colToX(cols);
+
         keyboard = new Keyboard(this);
+        keyText = new Text( width/2-317/2+ 10,height-40 , "SPACE: Pause/Restart   M: Back to manu   ESC: Exit");
+        keyText.setColor(new Color (233, 196,106));
     }
 
     public void init() throws InterruptedException {
@@ -40,7 +48,9 @@ public class Game implements KeyboardHandler {
         scoreBoard = new Text(grid.colToX(grid.getCols() - 5) - 5, grid.PADDING + 5, "SCORE: " + score);
         scoreBoard.setColor(Color.WHITE);
         scoreBoard.draw();
-
+        //keyText = new Text( width/2-122/2+ 10,height-40 , "SPACE: Pause/Restart   M: Back to manu   ESC: Exit");
+        //text = new Text( width/2,height-60 , ""+ rules.getHeight()); //descobrir tamanho text
+        keyText.draw();
         KeyboardEvent up = new KeyboardEvent();
         up.setKey(KeyboardEvent.KEY_UP);
         up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -161,7 +171,15 @@ public class Game implements KeyboardHandler {
             counter++;
             if (counter == 1) {
                 gameOverSound = new Sound("/resources/gameover.wav");
+                //menuSound.stop();
                 gameOverSound.play(true);
+                gameOverText = new Text (350, 250, "GAME OVER!!!");
+                gameOverText.setColor(Color.WHITE);
+                gameOverText.grow(130, 170);
+                gameOverText.draw();
+                backToMenuText = new Text(300, 400, "Press SPACE to go back to menu");
+                backToMenuText.setColor(Color.WHITE);
+                backToMenuText.draw();
             }
         }
     }

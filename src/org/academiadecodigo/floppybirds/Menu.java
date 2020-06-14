@@ -22,7 +22,7 @@ public class Menu implements KeyboardHandler {
     private Game g;
     private int cols;
     private int rows;
-    private Text text;
+    //private Text text;
 
 
     public Menu(int cols, int rows) {
@@ -39,7 +39,7 @@ public class Menu implements KeyboardHandler {
         button = new Picture(10*20, 20*20, "resources/Play.png");
 
         pressText = new Text( width/2-122/2+ 10,height-40 , "Press SPACE to Play");
-        text = new Text( width/2,height-60 , ""+ rules.getHeight()); //descobrir tamanho texto
+       // text = new Text( width/2,height-60 , ""+ rules.getHeight()); //descobrir tamanho texto
         pressText.setColor(new Color (233, 196,106));
 
 
@@ -58,7 +58,7 @@ public class Menu implements KeyboardHandler {
         rules.draw();
         title.draw();
         pressText.draw();
-        text.draw();
+        //text.draw();
 
 
 
