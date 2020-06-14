@@ -1,14 +1,10 @@
 package org.academiadecodigo.floppybirds;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Menu implements KeyboardHandler {
@@ -33,6 +29,7 @@ public class Menu implements KeyboardHandler {
         grid = new Grid(cols, rows);
         keyboard = new Keyboard(this);
         frontGrid= new Grid(20, 15);
+
         this.snake = new Picture(20, 20, "resources/snake.png");
         button = new Picture(10*20, 20*20, "resources/Play.png");
         this.cols=cols;
@@ -62,6 +59,7 @@ public class Menu implements KeyboardHandler {
 
     //Waits to KeyPlay to init and start Game
     public void play() throws InterruptedException {
+
         g = new Game(cols, rows, 200);
         while(!testPlay){
             System.out.println("waiting");

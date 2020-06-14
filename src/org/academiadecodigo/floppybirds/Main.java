@@ -1,3 +1,4 @@
+/*
 package org.academiadecodigo.floppybirds;
 
 
@@ -9,3 +10,4 @@ public class Main {
         g.start();
     }
 }
+*/

@@ -30,7 +30,7 @@ public class Game implements KeyboardHandler {
         grid = new Grid(cols, rows);
         keyboard = new Keyboard(this);
         menuSound = new Sound("/resources/tetris.wav");
-        menuSound.play(true);
+        //menuSound.play(true);
     }
 
     public void init() throws InterruptedException {
@@ -94,6 +94,7 @@ public class Game implements KeyboardHandler {
     public void start() throws InterruptedException {
 
         while (!stop||!gameOver) {
+
             if (paused) {
                 Thread.sleep(delay);
             } else {
@@ -102,12 +103,11 @@ public class Game implements KeyboardHandler {
                 appleCollision();
                 snake.move(snake.getCurrentDirection());
             }
-        }
-        /*if (stop) {
-            Menu g = new Menu(40, 30);
+            if(stop){Menu g = new Menu(40, 30);
             g.menu();
-            g.play();
-        }*/
+            g.play();}
+        }
+
 
     }
 
@@ -169,7 +169,6 @@ public class Game implements KeyboardHandler {
                 System.exit(0);
                 break;
             case KeyboardEvent.KEY_M:
-                System.out.println(""+ stop);
                 stop=true;
                 break;
         }
