@@ -69,7 +69,7 @@ public class Menu implements KeyboardHandler {
 
         KeyboardEvent play = new KeyboardEvent();
         play.setKey(KeyboardEvent.KEY_SPACE);
-        play.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        play.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         keyboard.addEventListener(play);
 
 
@@ -92,11 +92,11 @@ public class Menu implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        testPlay = true;
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
+        testPlay = true;
     }
 
 

@@ -27,7 +27,6 @@ public class Game implements KeyboardHandler {
 
     public Game(int cols, int rows, int delay) throws InterruptedException {
         this.delay = delay;
-        paused = true;
         grid = new Grid(cols, rows);
         keyboard = new Keyboard(this);
         menuSound = new Sound("/resources/tetris.wav");
