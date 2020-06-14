@@ -1,5 +1,6 @@
 package org.academiadecodigo.floppybirds;
 
+import org.academiadecodigo.bootcamp.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -19,11 +20,16 @@ public class Game implements KeyboardHandler {
     private Keyboard keyboard;
     private boolean paused;
     private boolean gameOver;
+    private Sound eat;
+    private Sound gameOverSound;
+    private Sound menuSound;
 
     public Game(int cols, int rows, int delay) throws InterruptedException {
         this.delay = delay;
         grid = new Grid(cols, rows);
         keyboard = new Keyboard(this);
+        menuSound = new Sound("/resources/tetris.wav");
+        menuSound.play(true);
     }
 
     public void init() throws InterruptedException {
@@ -95,13 +101,16 @@ public class Game implements KeyboardHandler {
 
     public void appleCollision() {
 
-        if(collisionDetector.check(apple)) {
+        if (collisionDetector.check(apple)) {
             if (apple.getType() == "Red") {
                 score = score + 10;
-            } if (apple.getType() == "Golden") {
+            }
+            if (apple.getType() == "Golden") {
                 score = score + 30;
             }
             apple.delete();
+            eat = new Sound("/resources/eat.wav");
+            eat.play(true);
             apple = new Apple(grid);
             System.out.println(score);
             scoreBoard.delete();
@@ -112,13 +121,19 @@ public class Game implements KeyboardHandler {
     }
 
     public void snakeCollision() throws InterruptedException {
-
-        while(collisionDetector.check()) {
+        int counter = 0;
+        while (collisionDetector.check()) {
             gameOver = true;
             Thread.sleep(300);
             snake.clear();
             Thread.sleep(300);
             snake.show();
+            counter++;
+            if (counter == 1) {
+                gameOverSound = new Sound("/resources/gameover.wav");
+                menuSound.stop();
+                gameOverSound.play(true);
+            }
         }
     }
 
@@ -164,5 +179,5 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    
+
 }

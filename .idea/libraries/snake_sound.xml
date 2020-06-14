@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="snake-sound">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/snake-sound.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
