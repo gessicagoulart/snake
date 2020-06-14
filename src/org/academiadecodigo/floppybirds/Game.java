@@ -34,7 +34,7 @@ public class Game implements KeyboardHandler {
         int width = grid.colToX(cols);
 
         keyboard = new Keyboard(this);
-        keyText = new Text( width/2-317/2+ 10,height-40 , "SPACE: Pause/Restart   M: Back to manu   ESC: Exit");
+        keyText = new Text( width/2-317/2+ 10,height-40 , "SPACE: Pause/Restart   M: Back to menu   ESC: Exit");
         keyText.setColor(new Color (233, 196,106));
     }
 
