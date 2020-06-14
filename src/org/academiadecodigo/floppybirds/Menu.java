@@ -10,12 +10,16 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Menu implements KeyboardHandler {
 
+
+
+
     private int delay;
     private Grid grid;
     private Keyboard keyboard;
     private Grid frontGrid;
-    private Picture base;
+    private Picture rules;
     private Picture snake;
+    private Picture title;
     private Picture button;
     private Text pressText;
     private boolean testPlay;
@@ -35,12 +39,13 @@ public class Menu implements KeyboardHandler {
         keyboard = new Keyboard(this);
 
         frontGrid= new Grid(20, 15);
-        base = new Picture(width-width/2, 15 ,"resources/1.png");
+        rules = new Picture(width-width/2 -20, (height/2-374/2-30 ),"resources/rules.png");
         this.snake = new Picture(20, height/2-358/3, "resources/snake.png");
+        title = new Picture(20, 30, "resources/title.png");
         button = new Picture(10*20, 20*20, "resources/Play.png");
 
-        pressText = new Text( width/2-122/2,height-40 , "Press SPACE to Play");
-        text = new Text( width/2,height-60 , ""+ snake.getHeight()); //descobrir tamanho texto
+        pressText = new Text( width/2-122/2+ 10,height-40 , "Press SPACE to Play");
+        text = new Text( width/2,height-60 , ""+ rules.getHeight()); //descobrir tamanho texto
         pressText.setColor(new Color (233, 196,106));
 
 
@@ -59,9 +64,11 @@ public class Menu implements KeyboardHandler {
         //frontGrid.init(new Color(42,157,143));
         button.draw();
         snake.draw();
-        base.draw();
+        rules.draw();
+        title.draw();
         pressText.draw();
         text.draw();
+
 
 
         KeyboardEvent play = new KeyboardEvent();

@@ -17,6 +17,7 @@ public class Game implements KeyboardHandler {
     private Integer score;
     private CollisionDetector collisionDetector;
     private Text scoreBoard;
+    private Text keyText;
     private Keyboard keyboard;
     private boolean paused;
     private boolean gameOver;
@@ -28,7 +29,12 @@ public class Game implements KeyboardHandler {
     public Game(int cols, int rows, int delay) throws InterruptedException {
         this.delay = delay;
         grid = new Grid(cols, rows);
+        int height = grid.rowToY(rows);
+        int width = grid.colToX(cols);
+
         keyboard = new Keyboard(this);
+        keyText = new Text( width/2-316/2+ 10,height-40 , "SPACE: Pause/Restart   M: Back to Menu   ESC: Exit");
+
         menuSound = new Sound("/resources/tetris.wav");
         //menuSound.play(true);
     }
@@ -43,6 +49,8 @@ public class Game implements KeyboardHandler {
         scoreBoard = new Text(grid.colToX(grid.getCols() - 5) - 5, grid.PADDING + 5, "SCORE: " + score);
         scoreBoard.setColor(Color.WHITE);
         scoreBoard.draw();
+        keyText.setColor(new Color (233, 196,106));
+        keyText.draw();
 
         KeyboardEvent up = new KeyboardEvent();
         up.setKey(KeyboardEvent.KEY_UP);
