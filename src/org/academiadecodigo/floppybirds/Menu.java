@@ -38,8 +38,8 @@ public class Menu implements KeyboardHandler {
         keyboard = new Keyboard(this);
 
         frontGrid= new Grid(20, 15);
-        base = new Picture(width-width/2, 15 ,"resources/base.png");
-        this.snake = new Picture(20, height/2-170/2, "resources/snake.png");
+        base = new Picture(width-width/2, 15 ,"resources/1.png");
+        this.snake = new Picture(20, height/2-358/3, "resources/snake.png");
         button = new Picture(10*20, 20*20, "resources/Play.png");
 
         pressText = new Text( width/2-122/2,height-40 , "Press SPACE to Play");
