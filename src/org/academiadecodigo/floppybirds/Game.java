@@ -27,6 +27,7 @@ public class Game implements KeyboardHandler {
 
     public Game(int cols, int rows, int delay) throws InterruptedException {
         this.delay = delay;
+        paused = true;
         grid = new Grid(cols, rows);
         keyboard = new Keyboard(this);
         menuSound = new Sound("/resources/tetris.wav");
@@ -39,7 +40,7 @@ public class Game implements KeyboardHandler {
         score = 0;
         snake = new Snake(grid);
         apple = new Apple(grid);
-        collisionDetector = new CollisionDetector(snake);
+        collisionDetector = new CollisionDetector(snake, grid);
         scoreBoard = new Text(grid.colToX(grid.getCols() - 5) - 5, grid.PADDING + 5, "SCORE: " + score);
         scoreBoard.setColor(Color.WHITE);
         scoreBoard.draw();
@@ -187,10 +188,11 @@ public class Game implements KeyboardHandler {
                 }
                 break;
             case KeyboardEvent.KEY_Z:
-                delay = delay - 15;
+                delay = delay + 15;
                 break;
             case KeyboardEvent.KEY_X:
-                delay = delay + 15;
+                delay = delay - 15;
+                break;
         }
     }
 

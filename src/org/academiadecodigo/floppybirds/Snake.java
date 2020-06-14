@@ -2,7 +2,6 @@ package org.academiadecodigo.floppybirds;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import java.util.LinkedList;
 
 
@@ -13,18 +12,18 @@ public class Snake {
     private LinkedList<Rectangle> body;
     private int col;
     private int row;
-    private Keyboard keyboard;
     private boolean ateApple;
     public static final int INITIAL_LENGTH = 3;
     public static final Color COLOR = Color.GREEN;
 
+
     public Snake(Grid grid) {
 
         this.grid = grid;
-        currentDirection = GridDirection.DOWN;//GridDirection.getRandom();
+        currentDirection = GridDirection.getRandom();
         body = new LinkedList<>();
-        col = (int) (Math.random() * grid.getCols());
-        row = (int) (Math.random() * grid.getRows());
+        col = (grid.getCols()/4) + (int) (Math.random() * (grid.getCols()*3/4 - grid.getCols()/4));
+        row = (grid.getRows()/4) + (int) (Math.random() * (grid.getRows()*3/4 - grid.getRows()/4));
 
         switch (currentDirection) {
             case UP:
@@ -56,32 +55,16 @@ public class Snake {
 
         switch (direction) {
             case UP:
-                if (row <= 0) {
-                    row = grid.getRows() - 1;
-                } else {
                     row--;
-                }
                 break;
             case DOWN:
-                if (row >= grid.getRows() - 1) {
-                    row = 0;
-                } else {
                     row ++;
-                }
                 break;
             case LEFT:
-                if (col <= 0) {
-                    col = grid.getCols() - 1;
-                } else {
                     col--;
-                }
                 break;
             case RIGHT:
-                if (col >= grid.getCols() - 1) {
-                    col = 0;
-                } else {
                     col++;
-                }
                 break;
         }
 
@@ -125,6 +108,5 @@ public class Snake {
     public LinkedList<Rectangle> getBody(){
         return body;
     }
-
 
 }

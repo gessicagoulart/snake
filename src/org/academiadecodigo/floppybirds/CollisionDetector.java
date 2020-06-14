@@ -7,10 +7,12 @@ public class CollisionDetector {
 
     private LinkedList<Rectangle> snakeBody;
     private Snake snake;
+    private Grid grid;
 
-    public CollisionDetector(Snake snake) {
+    public CollisionDetector(Snake snake, Grid grid) {
 
         snakeBody = snake.getBody();
+        this.grid = grid;
         this.snake = snake;
     }
 
@@ -18,7 +20,10 @@ public class CollisionDetector {
 
         Rectangle head = snakeBody.getFirst();
         for (Rectangle rectangle : snakeBody){
-            if(head != rectangle && snakeBody.getFirst().getX() == rectangle.getX() && head.getY() == rectangle.getY()){
+            if(head != rectangle && head.getX() == rectangle.getX() && head.getY() == rectangle.getY()) {
+                return true;
+            }
+            if(head.getY() <= 0 || head.getX() <= 0 || head.getY() >= (grid.rowToY(grid.getRows() - 1)) || head.getX() >= (grid.colToX(grid.getCols() - 1))) {
                 return true;
             }
         }
