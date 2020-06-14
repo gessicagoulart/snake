@@ -10,33 +10,24 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
 
-    private int delay;
     private Grid grid;
     private Snake snake;
     private Apple apple;
-    private Integer score;
+    private int score;
     private CollisionDetector collisionDetector;
     private Text scoreBoard;
-    private Text keyText;
     private Keyboard keyboard;
     private boolean paused;
     private boolean gameOver;
     private boolean stop;
     private Sound eat;
     private Sound gameOverSound;
-    private Sound menuSound;
+    public static int delay;
 
-    public Game(int cols, int rows, int delay) throws InterruptedException {
-        this.delay = delay;
+    public Game(int cols, int rows) throws InterruptedException {
+        //this.delay = Math.max(50, 200 - score / 50 * 8);
         grid = new Grid(cols, rows);
-        int height = grid.rowToY(rows);
-        int width = grid.colToX(cols);
-
         keyboard = new Keyboard(this);
-        keyText = new Text( width/2-316/2+ 10,height-40 , "SPACE: Pause/Restart   M: Back to Menu   ESC: Exit");
-
-        menuSound = new Sound("/resources/tetris.wav");
-        //menuSound.play(true);
     }
 
     public void init() throws InterruptedException {
@@ -49,24 +40,38 @@ public class Game implements KeyboardHandler {
         scoreBoard = new Text(grid.colToX(grid.getCols() - 5) - 5, grid.PADDING + 5, "SCORE: " + score);
         scoreBoard.setColor(Color.WHITE);
         scoreBoard.draw();
-        keyText.setColor(new Color (233, 196,106));
-        keyText.draw();
 
         KeyboardEvent up = new KeyboardEvent();
         up.setKey(KeyboardEvent.KEY_UP);
         up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent k = new KeyboardEvent();
+        k.setKey(KeyboardEvent.KEY_K);
+        k.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         KeyboardEvent down = new KeyboardEvent();
         down.setKey(KeyboardEvent.KEY_DOWN);
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent j = new KeyboardEvent();
+        j.setKey(KeyboardEvent.KEY_J);
+        j.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
         KeyboardEvent left = new KeyboardEvent();
         left.setKey(KeyboardEvent.KEY_LEFT);
         left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent h = new KeyboardEvent();
+        h.setKey(KeyboardEvent.KEY_H);
+        h.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         KeyboardEvent right = new KeyboardEvent();
         right.setKey(KeyboardEvent.KEY_RIGHT);
         right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent l = new KeyboardEvent();
+        l.setKey(KeyboardEvent.KEY_L);
+        l.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
         KeyboardEvent space = new KeyboardEvent();
         space.setKey(KeyboardEvent.KEY_SPACE);
@@ -88,10 +93,15 @@ public class Game implements KeyboardHandler {
         menu.setKey(KeyboardEvent.KEY_M);
         menu.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+
         keyboard.addEventListener(left);
+        keyboard.addEventListener(h);
         keyboard.addEventListener(right);
+        keyboard.addEventListener(l);
         keyboard.addEventListener(up);
+        keyboard.addEventListener(k);
         keyboard.addEventListener(down);
+        keyboard.addEventListener(j);
         keyboard.addEventListener(space);
         keyboard.addEventListener(plus);
         keyboard.addEventListener(minus);
@@ -104,16 +114,16 @@ public class Game implements KeyboardHandler {
         while (!stop||!gameOver) {
 
             if (paused) {
-                Thread.sleep(delay);
+                Thread.sleep(200);
             } else {
-                Thread.sleep(delay);
+                Thread.sleep(Math.max(70, 200 - score / 50 * 8));
                 snakeCollision();
                 appleCollision();
                 snake.move(snake.getCurrentDirection());
             }
             if(stop){Menu g = new Menu(40, 30);
-            g.menu();
-            g.play();}
+                g.menu();
+                g.play();}
         }
 
 
@@ -151,7 +161,6 @@ public class Game implements KeyboardHandler {
             counter++;
             if (counter == 1) {
                 gameOverSound = new Sound("/resources/gameover.wav");
-                menuSound.stop();
                 gameOverSound.play(true);
             }
         }
@@ -162,15 +171,19 @@ public class Game implements KeyboardHandler {
 
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
+            case KeyboardEvent.KEY_H:
                 if (snake.getCurrentDirection() != GridDirection.RIGHT) snake.setCurrentDirection(GridDirection.LEFT);
                 break;
             case KeyboardEvent.KEY_RIGHT:
+            case KeyboardEvent.KEY_L:
                 if (snake.getCurrentDirection() != GridDirection.LEFT) snake.setCurrentDirection(GridDirection.RIGHT);
                 break;
             case KeyboardEvent.KEY_UP:
+            case KeyboardEvent.KEY_K:
                 if (snake.getCurrentDirection() != GridDirection.DOWN) snake.setCurrentDirection(GridDirection.UP);
                 break;
             case KeyboardEvent.KEY_DOWN:
+            case KeyboardEvent.KEY_J:
                 if (snake.getCurrentDirection() != GridDirection.UP) snake.setCurrentDirection(GridDirection.DOWN);
                 break;
             case KeyboardEvent.KEY_ESC:
@@ -195,8 +208,9 @@ public class Game implements KeyboardHandler {
                         paused = false;
                     }
                 } if (gameOver) {
-                    stop = true;
-                }
+                snake.clear();
+                stop = true;
+            }
                 break;
             case KeyboardEvent.KEY_Z:
                 delay = delay + 15;

@@ -55,16 +55,22 @@ public class Snake {
 
         switch (direction) {
             case UP:
-                    row--;
+                row--;
                 break;
             case DOWN:
-                    row ++;
+                if(row >= grid.getRows() -1) {
+                } else {
+                    row++;
+                }
                 break;
             case LEFT:
-                    col--;
+                col--;
                 break;
             case RIGHT:
+                if(col >= grid.getCols() -1) {
+                } else {
                     col++;
+                }
                 break;
         }
 

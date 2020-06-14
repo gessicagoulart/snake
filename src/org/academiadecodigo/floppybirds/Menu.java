@@ -10,10 +10,6 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Menu implements KeyboardHandler {
 
-
-
-
-    private int delay;
     private Grid grid;
     private Keyboard keyboard;
     private Grid frontGrid;
@@ -26,12 +22,10 @@ public class Menu implements KeyboardHandler {
     private Game g;
     private int cols;
     private int rows;
-
     private Text text;
 
 
     public Menu(int cols, int rows) {
-        //this.delay = delay;
         grid = new Grid(cols, rows);
         int height = grid.rowToY(rows);
         int width = grid.colToX(cols);
@@ -52,9 +46,6 @@ public class Menu implements KeyboardHandler {
         this.cols=cols;
         this.rows=rows;
 
-        //g = new Game(cols, rows, delay);
-
-        //initializes menu created
     }
 
 
@@ -82,7 +73,7 @@ public class Menu implements KeyboardHandler {
     //Waits to KeyPlay to init and start Game
     public void play() throws InterruptedException {
 
-        g = new Game(cols, rows, 200);
+        g = new Game(cols, rows);
         while(!testPlay){
             System.out.println("waiting");
         }
@@ -91,7 +82,6 @@ public class Menu implements KeyboardHandler {
         g.start();
 
     }
-
 
 
     @Override

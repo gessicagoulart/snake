@@ -21,9 +21,9 @@ public class Grid {
 
         public void init() {
 
-        background = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
-        background.setColor(Color.DARK_GRAY);
-        background.fill();
+                background = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
+                background.setColor(Color.DARK_GRAY);
+                background.fill();
         }
         public void init(Color color) {
 

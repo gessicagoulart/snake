@@ -23,7 +23,7 @@ public class CollisionDetector {
             if(head != rectangle && head.getX() == rectangle.getX() && head.getY() == rectangle.getY()) {
                 return true;
             }
-            if(head.getY() <= 0 || head.getX() <= 0 || head.getY() >= (grid.rowToY(grid.getRows() - 1)) || head.getX() >= (grid.colToX(grid.getCols() - 1))) {
+            if(head.getY() <= 0 || head.getX() <= 0 || head.getY() >= (grid.rowToY(grid.getRows())) || head.getX() >= (grid.colToX(grid.getCols()))) {
                 return true;
             }
         }
